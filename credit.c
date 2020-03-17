@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 string flag = "INVALID";
 
@@ -33,19 +34,19 @@ int main(void)
         cardnumber = cardnumber/10;
         digitos++;
 
-        if ((cardnumber == 37 || cardnumber == 34)) //|| (cardnumber <= 379 && cardnumber >= 340)
+        if ((cardnumber == 37 || cardnumber == 34)) 
         {
-            flag = "AMEX"; 
+            flag = "a"; //AMEX
         }
  
         if ((cardnumber <= 55 && cardnumber >= 51) || (cardnumber <= 559 && cardnumber >= 510))
         {
-            flag = "MASTERCARD";
+            flag = "m"; //MASTER
         }
 
         if ((cardnumber <= 49 && cardnumber >= 40) || (cardnumber <= 499 && cardnumber >= 400))
         {
-            flag = "VISA";
+            flag = "v";
         }
     
     }while (cardnumber>=1);
@@ -56,6 +57,22 @@ int main(void)
     {
         flag = "INVALID";
     }
+
+    if ((strcmp(flag, "a") == 0) && digitos == 15) //if (strcmp(favoriteDairyProduct, "cheese") == 0)
+    {
+        flag = "AMEX";
+    }
+    else 
+    if ((strcmp(flag, "m") == 0) && digitos == 15)
+    {
+        flag = "MASTERCARD";
+    }
+    else if ((strcmp(flag, "v") == 0) && (digitos == 13 || digitos == 16))
+    {
+        flag = "VISA";
+    }
+
+
 
     //printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
     printf("%s\n", flag);
