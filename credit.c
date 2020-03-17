@@ -60,8 +60,6 @@ int main(void)
        // printf("%s\n", flag);
     }
 
-printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
-    printf("%s\n", flag);
 
     if ((strcmp(flag, "a") == 0) && digitos == 15) 
     {
@@ -85,6 +83,6 @@ printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\
        // printf("%s\n", flag);
     }
 
-    printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
+   // printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
     printf("%s\n", flag);
 }
