@@ -56,20 +56,29 @@ int main(void)
     if ((cardnumber%10) != 0 )
     {
         flag = "INVALID";
+        printf("%s\n", flag);
     }
 
     if ((strcmp(flag, "a") == 0) && digitos == 15) //if (strcmp(favoriteDairyProduct, "cheese") == 0)
     {
         flag = "AMEX";
+        printf("%s\n", flag);
     }
     else 
-    if ((strcmp(flag, "m") == 0) && digitos == 15)
+    if ((strcmp(flag, "m") == 0) && digitos == 16)
     {
-        flag = "MASTERCARD";
+        flag = "MASTERCARD"; 
+        printf("%s\n", flag);
     }
     else if ((strcmp(flag, "v") == 0) && (digitos == 13 || digitos == 16))
     {
         flag = "VISA";
+        printf("%s\n", flag);
+    }
+    else 
+    {
+        flag = "INVALID";
+        printf("%s\n", flag);
     }
 
 
