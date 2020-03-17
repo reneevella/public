@@ -34,7 +34,7 @@ int main(void)
         cardnumber = cardnumber/10;
         digitos++;
 
-        if ((cardnumber == 37 || cardnumber == 34)) 
+        if ((cardnumber == 37 || cardnumber == 34) || ((cardnumber <= 379 && cardnumber >= 370) || (cardnumber >= 340 && cardnumber <= 349))) 
         {
             flag = "a"; //AMEX
         }
@@ -59,7 +59,7 @@ int main(void)
        // printf("%s\n", flag);
     }
 
-    if ((strcmp(flag, "a") == 0) && digitos == 15) //if (strcmp(favoriteDairyProduct, "cheese") == 0)
+    if ((strcmp(flag, "a") == 0) && digitos == 15) 
     {
         flag = "AMEX";
         //printf("%s\n", flag);
@@ -80,7 +80,6 @@ int main(void)
         flag = "INVALID";
        // printf("%s\n", flag);
     }
-
 
 
     //printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
