@@ -33,17 +33,17 @@ int main(void)
         cardnumber = cardnumber/10;
         digitos++;
 
-        if ((cardnumber <= 37 && cardnumber >= 34) || (cardnumber <= 370 && cardnumber >= 340))
+        if ((cardnumber <= 37 && cardnumber >= 34) || (cardnumber <= 379 && cardnumber >= 340))
         {
             flag = "AMEX";
         }
  
-        if ((cardnumber <= 55 && cardnumber >= 51) || (cardnumber <= 550 && cardnumber >= 510))
+        if ((cardnumber <= 55 && cardnumber >= 51) || (cardnumber <= 559 && cardnumber >= 510))
         {
             flag = "MASTERCARD";
         }
 
-        if ((cardnumber <= 49 && cardnumber >= 40) || (cardnumber <= 490 && cardnumber >= 400))
+        if ((cardnumber <= 49 && cardnumber >= 40) || (cardnumber <= 499 && cardnumber >= 400))
         {
             flag = "VISA";
         }
