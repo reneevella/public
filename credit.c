@@ -33,9 +33,9 @@ int main(void)
         cardnumber = cardnumber/10;
         digitos++;
 
-        if ((cardnumber <= 37 && cardnumber >= 34) || (cardnumber <= 379 && cardnumber >= 340))
+        if ((cardnumber == 37 || cardnumber == 34)) //|| (cardnumber <= 379 && cardnumber >= 340)
         {
-            flag = "AMEX";
+            flag = "AMEX"; 
         }
  
         if ((cardnumber <= 55 && cardnumber >= 51) || (cardnumber <= 559 && cardnumber >= 510))
