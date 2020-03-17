@@ -1,7 +1,7 @@
 #include <cs50.h>
 #include <stdio.h>
 
-string flag = "Flag unknown";
+string flag = "INVALID";
 
 int contardigitos, digitos, restosum = 0;
 long cardnumber;
@@ -35,17 +35,17 @@ int main(void)
 
         if ((cardnumber <= 37 && cardnumber >= 34) || (cardnumber <= 370 && cardnumber >= 340))
         {
-            flag = "American Express         ";
+            flag = "AMEX";
         }
  
         if ((cardnumber <= 55 && cardnumber >= 51) || (cardnumber <= 550 && cardnumber >= 510))
         {
-            flag = "MasterCard             ";
+            flag = "MASTERCARD";
         }
 
         if ((cardnumber <= 49 && cardnumber >= 40) || (cardnumber <= 490 && cardnumber >= 400))
         {
-            flag = "VISA                ";
+            flag = "VISA";
         }
     
     }while (cardnumber>=1);
