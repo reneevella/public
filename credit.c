@@ -54,8 +54,9 @@ int main(void)
 
     if ((cardnumber%10) != 0 )
     {
-        flag = "INVALID.";
+        flag = "INVALID";
     }
 
-    printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
+    //printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
+    printf("%s\n", flag);
 }
