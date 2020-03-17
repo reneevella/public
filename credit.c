@@ -12,26 +12,26 @@ int main(void)
     cardnumber = get_long("Enter your cardnumber:\n");   
     //printf("\n\ndigitos: %i\nContarDigitos: %i\nCardnumber: %li\n", digitos,contardigitos,cardnumber);
 
-    restosum = cardnumber%10;
-    cardnumber = cardnumber/10;
+    restosum = cardnumber % 10;
+    cardnumber = cardnumber / 10;
 
     do
     {   
-        if ( ((cardnumber % 10) * 2) >= 10)
+        if (((cardnumber % 10) * 2) >= 10)
         {
             contardigitos = contardigitos + (((cardnumber % 10) * 2) - 9);
-            cardnumber = cardnumber/10;
+            cardnumber = cardnumber / 10;
             digitos++;
         }
         else
         {
             contardigitos = contardigitos + (cardnumber % 10) * 2;
-            cardnumber = cardnumber/10;
+            cardnumber = cardnumber / 10;
             digitos++; 
         }
 
-        restosum = cardnumber%10 + restosum;
-        cardnumber = cardnumber/10;
+        restosum = cardnumber % 10 + restosum;
+        cardnumber = cardnumber / 10;
         digitos++;
 
         if ((cardnumber == 37 || cardnumber == 34) || ((cardnumber <= 379 && cardnumber >= 370) || (cardnumber >= 340 && cardnumber <= 349))) 
@@ -50,39 +50,33 @@ int main(void)
             flag = "v";
         }
     
-    }while (cardnumber>=1);
+    }while (cardnumber >= 1);
 
     cardnumber = restosum + contardigitos;
 
-    if ((cardnumber%10) != 0 )
+    if ((cardnumber % 10) != 0)
     {
         flag = "INVALID";
-       // printf("%s\n", flag);
     }
 
 
     if ((strcmp(flag, "a") == 0) && digitos == 15) 
     {
         flag = "AMEX";
-        //printf("%s\n", flag);
     }
-    else 
-    if ((strcmp(flag, "m") == 0) && digitos == 16)
+    else if ((strcmp(flag, "m") == 0) && digitos == 16)
     {
         flag = "MASTERCARD"; 
-        //printf("%s\n", flag);
     }
     else if ((strcmp(flag, "v") == 0) && (digitos == 13 || digitos == 16))
     {
         flag = "VISA";
-       // printf("%s\n", flag);
     }
     else 
     {
         flag = "INVALID";
-       // printf("%s\n", flag);
     }
 
-   // printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
+    // printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
     printf("%s\n", flag);
 }
