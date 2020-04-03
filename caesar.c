@@ -12,7 +12,7 @@ int main(int argc, string argv[])
 
     for (int i = 0, n = strlen(argv[1]); i < n; i++) // verifica se cada caractere da posição 1 é valida e se não tem mais de 2 variaveis no vetor
     {
-        if (!isalnum(argv[1][i]) || isalpha(argv[1][i]) || argc > 2)
+        if (!isalnum(argv[1][i]) || isalpha(argv[1][i]) || argc > 2 || argc < 1)
         {
             printf("Usage: ./caesar key ");
             return 1;
