@@ -56,6 +56,7 @@ int main(int argc, string argv[])
         if (!vote(name))
         {
             printf("Invalid vote.\n");
+            i--;
         }
     }
 
@@ -105,7 +106,7 @@ void print_winner(void)
 
     for (int i = 0; i < winner_count; i++)
     {
-        printf("Name: %s\n", winner_names[i]);
+        printf("%s\n", winner_names[i]);
     }
 
     return;
