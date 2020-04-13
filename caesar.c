@@ -8,12 +8,13 @@
 int main(int argc, string argv[])
 {
     if (argc != 2)
-        {
-            printf("Usage: ./caesar key ");
-            return 1;
-        }
+    {
+        printf("Usage: ./caesar key ");
+        return 1;
+    }
 
-    for (int i = 0, n = strlen(argv[1]); i < n; i++) // verifica se cada caractere da posição 1 é valida e se não tem mais de 2 variaveis no vetor
+    for (int i = 0, n = strlen(argv[1]); i < n;
+         i++) // verifica se cada caractere da posição 1 é valida e se não tem mais de 2 variaveis no vetor
     {
         if (!isalnum(argv[1][i]) || isalpha(argv[1][i]))
         {
