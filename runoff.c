@@ -162,7 +162,7 @@ void tabulate(void)
                 j++;
                 k = preferences[i][j];
             }
-
+            candidates[k].votes++;
         }
     }
 
