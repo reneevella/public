@@ -156,9 +156,8 @@ void tabulate(void)
 
         else
         {
-            while (candidates[k].eliminated == true)
+            for ( ; candidates[k].eliminated == true; j++)
             {
-                j++;
                 k = preferences[i][j];
             }
             candidates[k].votes++;
