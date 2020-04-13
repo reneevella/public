@@ -146,7 +146,7 @@ void tabulate(void)
     for (int i = 0, j = 0; i < voter_count; i++)
     {
         //preferences[voter][rank]
-
+        j = 0;
         k = preferences[i][j]; // k recebe numero do candidato guardado em j!!!!
 
         if (candidates[k].eliminated == false) //se não for eliminado
