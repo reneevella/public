@@ -32,14 +32,14 @@ int main(void)
             printf("#");
         }
 
-        printf(" ");
+        printf("  ");
 
         for (hashright = hashcount - 1; hashright >= 0; hashright--)
         {
             printf("#");
         }
 
-        printf("\n\n");
+        printf("\n");
         hashcount++;
         col--;
     }
