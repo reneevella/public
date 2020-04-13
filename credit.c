@@ -34,7 +34,8 @@ int main(void)
         cardnumber = cardnumber / 10;
         digitos++;
 
-        if ((cardnumber == 37 || cardnumber == 34) || ((cardnumber <= 379 && cardnumber >= 370) || (cardnumber >= 340 && cardnumber <= 349))) 
+        if ((cardnumber == 37 || cardnumber == 34) || ((cardnumber <= 379 && cardnumber >= 370) || (cardnumber >= 340 
+                && cardnumber <= 349))) 
         {
             flag = "a"; //AMEX
             digitos++;
@@ -48,9 +49,10 @@ int main(void)
         if ((cardnumber <= 49 && cardnumber >= 40) || (cardnumber <= 499 && cardnumber >= 400))
         {
             flag = "v";
-        }
+        }    
+    }
     
-    }while (cardnumber >= 1);
+    while (cardnumber >= 1);
 
     cardnumber = restosum + contardigitos;
 
@@ -58,7 +60,6 @@ int main(void)
     {
         flag = "INVALID";
     }
-
 
     if ((strcmp(flag, "a") == 0) && digitos == 15) 
     {
