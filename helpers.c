@@ -1,5 +1,9 @@
+#include <math.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "helpers.h"
-#include "math.h"
 
 /**
  * {
@@ -66,21 +70,61 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
-    for (int i = 0; i < height; i++)
-    {
-        int k = width;
 
-        for (int j = 0; j < width / 2; j++)
-        {
-            RGBTRIPLE temp = image[i][j];
+/**
+    g.originalBoard = (int *)malloc(9 * 9 * sizeof(int));
+
+    int *originalBoard = malloc(sizeof(g.board));
+
+    memcpy(originalBoard, g.board, sizeof(g.board));
+
+    RGBTRIPLE temp = image[i][j];
             image[i][j] = image[i][k];
             image[i][k] = temp;
 
             k--;
+
+*/
+
+
+    RGBTRIPLE *imgcpy = malloc(width * sizeof(RGBTRIPLE));
+        if (NULL == imgcpy)
+        {
+        // malloc failed
+        return;
+        }
+
+    //imgcpy[1].rgbtGreen = 10;
+
+    for (int i = 0; i < height; i++)
+    {
+        int k = width;
+
+        // copia conteudo de image para imgcpy
+
+        //memcpy(imgcpy, image, sizeof(width * sizeof(RGBTRIPLE)));
+
+        for (int j = 0; j < width; j++)
+        {
+            imgcpy[j] = image[i][j];
+
+        }
+
+        for (int j = 0; j < width; j++)
+        {
+            image[i][j] =  imgcpy[k];
+            k--;
         }
     }
+
+    free (imgcpy);
+
     return;
 }
+
+
+
+
 
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
