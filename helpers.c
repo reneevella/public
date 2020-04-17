@@ -14,19 +14,6 @@
 RGBTRIPLE;
 
 
- sepiaRed = .393 * originalRed + .769 * originalGreen + .189 * originalBlue
-  sepiaGreen = .349 * originalRed + .686 * originalGreen + .168 * originalBlue
-  sepiaBlue = .272 * originalRed + .534 * originalGreen + .131 * originalBlue
-
-
-
-
-int div = 3;
-
-            if (temp % div >= 5)
-                temp = temp / 3 + 1;
-            else
-                temp = temp / 3;
 
 ***/
 
@@ -38,7 +25,6 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             int temp = round((image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3.0);
-
 
             image[i][j].rgbtBlue = temp;
             image[i][j].rgbtGreen = temp;
@@ -108,19 +94,19 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
     for (int i = 0; i < height; i++)
     {
-        int k = width;
+        int k = width -1;
 
         // copia conteudo de image para imgcpy
 
         //memcpy(imgcpy, image, sizeof(width * sizeof(RGBTRIPLE)));
 
-        for (int j = 0; j < width; j++)
+        for (int j = 0; j <= width; j++)
         {
             imgcpy[j] = image[i][j];
 
         }
 
-        for (int j = 0; j < width; j++)
+        for (int j = 0; j <= width; j++)
         {
             image[i][j] =  imgcpy[k];
             k--;
