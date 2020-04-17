@@ -138,16 +138,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             lin = i - 1;
             col = j - 1;
 
-
+/**
             //verifica se linha começa na borda
             if (i <= 0)
                 lin = i;
 
-
             //verifica se coluna começa na borda
             if (j <= 0)
                 col = j;
-
 
             //verifica se linha termina na borda
             if (i < height)
@@ -156,6 +154,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             //verifica se coluna termina na borda
             if (j < width)
                 tot_col++;
+**/
 
 
             // faz um loop para cada pixel somando todos os valores em volta dele
