@@ -136,7 +136,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         return;
         }
     **/
-    
+
     RGBTRIPLE temp_image[height][width];
 
     for (int i = 0; i < height; i++)
@@ -189,11 +189,22 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         }
     }
 
+for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            image[i][j].rgbtBlue = temp_image[i][j].rgbtBlue;
+            image[i][j].rgbtGreen = temp_image[i][j].rgbtGreen;
+            image[i][j].rgbtRed = temp_image[i][j].rgbtRed;
+        }
+    }
+
+
     //memcpy(image, temp_image, sizeof(height * width * sizeof(RGBTRIPLE)));
 
     //free (temp_image);
-    
-    image = temp_image;
-    
+
+    //image = temp_image;
+
     return;
 }
