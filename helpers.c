@@ -144,9 +144,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         for (int j = 0; j < width; j++)
         {
             tot_lin = i;
-            lin = i;
+            lin = i - 1;
 
-            col = j;
+            col = j - 1;
             tot_col = j;
 
             //verifica se linha começa na borda
@@ -201,7 +201,6 @@ for (int i = 0; i < height; i++)
 
 
     //memcpy(image, temp_image, sizeof(height * width * sizeof(RGBTRIPLE)));
-
     //free (temp_image);
 
     //image = temp_image;
