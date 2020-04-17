@@ -18,6 +18,16 @@ RGBTRIPLE;
   sepiaGreen = .349 * originalRed + .686 * originalGreen + .168 * originalBlue
   sepiaBlue = .272 * originalRed + .534 * originalGreen + .131 * originalBlue
 
+
+
+
+int div = 3;
+
+            if (temp % div >= 5)
+                temp = temp / 3 + 1;
+            else
+                temp = temp / 3;
+
 ***/
 
 // Convert image to grayscale
@@ -27,13 +37,8 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            int temp = image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed;
-            int div = 3;
+            int temp = round(image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3.0;
 
-            if (temp % div >= 5)
-                temp = temp / 3 + 1;
-            else
-                temp = temp / 3;
 
             image[i][j].rgbtBlue = temp;
             image[i][j].rgbtGreen = temp;
