@@ -126,7 +126,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
     int temp_blue = 0, temp_green = 0, temp_red = 0;
-    int lin, col, tot_lin, tot_col, total_times = 1;
+    int lin, col, tot_lin, tot_col, total_times = 0;
     RGBTRIPLE temp_image[height][width];
 
     for (int i = 0; i < height; i++)
@@ -138,7 +138,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             lin = i - 1;
             col = j - 1;
 
-/**
+
             //verifica se linha começa na borda
             if (i <= 0)
                 lin = i;
@@ -154,13 +154,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             //verifica se coluna termina na borda
             if (j < width)
                 tot_col++;
-**/
+
 
 
             // faz um loop para cada pixel somando todos os valores em volta dele
-            for (; lin < tot_lin; lin++)
+            for (; lin <= tot_lin; lin++)
             {
-                for (; col < tot_col; col++)
+                for (; col <= tot_col; col++)
                 {
                     temp_red = temp_red + image[lin][col].rgbtRed;
                     temp_green += image[lin][col].rgbtGreen;
