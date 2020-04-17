@@ -94,19 +94,19 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 
     for (int i = 0; i < height; i++)
     {
-        int k = width -1;
+        int k = width - 1;
 
         // copia conteudo de image para imgcpy
 
         //memcpy(imgcpy, image, sizeof(width * sizeof(RGBTRIPLE)));
 
-        for (int j = 0; j <= width; j++)
+        for (int j = 0; j < width; j++)
         {
             imgcpy[j] = image[i][j];
 
         }
 
-        for (int j = 0; j <= width; j++)
+        for (int j = 0; j < width; j++)
         {
             image[i][j] =  imgcpy[k];
             k--;
