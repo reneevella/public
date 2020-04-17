@@ -150,12 +150,12 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             tot_col = j;
 
             //verifica se linha começa na borda
-            if (i > 0)
-                lin--;
+            if (i <= 0)
+                lin = i;
 
             //verifica se coluna começa na borda
-            if (j > 0)
-                col--;
+            if (j >= 0)
+                col = j;
 
             //verifica se linha termina na borda
             if (i < height)
