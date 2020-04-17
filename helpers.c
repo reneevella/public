@@ -94,7 +94,6 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         return;
         }
 
-    //imgcpy[1].rgbtGreen = 10;
 
     for (int i = 0; i < height; i++)
     {
