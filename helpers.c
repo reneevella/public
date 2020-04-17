@@ -128,6 +128,15 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     int temp_blue = 0, temp_green = 0, temp_red = 0;
     int lin, col, tot_lin, tot_col;
     int total_times = 0;
+
+    /** RGBTRIPLE * temp_image = malloc(height * width * sizeof(RGBTRIPLE));
+        if (NULL == temp_image)
+        {
+        // malloc failed
+        return;
+        }
+    **/
+    
     RGBTRIPLE temp_image[height][width];
 
     for (int i = 0; i < height; i++)
@@ -173,14 +182,18 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 }
             }
 
-            image[i][j].rgbtBlue = round(temp_blue / (float)total_times);
-            image[i][j].rgbtGreen = round(temp_green / (float)total_times);
-            image[i][j].rgbtRed = round(temp_red / (float)total_times);
+            temp_image[i][j].rgbtBlue = round(temp_blue / (float)total_times);
+            temp_image[i][j].rgbtGreen = round(temp_green / (float)total_times);
+            temp_image[i][j].rgbtRed = round(temp_red / (float)total_times);
 
         }
     }
 
-    //image = temp_image;
+    //memcpy(image, temp_image, sizeof(height * width * sizeof(RGBTRIPLE)));
 
+    //free (temp_image);
+    
+    image = temp_image;
+    
     return;
 }
