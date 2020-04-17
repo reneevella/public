@@ -93,5 +93,62 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+
+    int temp_blue = 0, temp_green = 0, temp_red = 0;
+    int ii, hh, jj, ww = 0;
+
+    int total_times = 0;
+
+    RGBTRIPLE temp_image[height][width];
+
+
+    //verifica valor de image, faz a conta, guarda em img-temp
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            ii = i - 1;
+            jj = j - 1;
+            hh = i + 3;
+            ww = j + 3;
+            int soma_b = 0;
+            int soma_g = 0;
+            int soma_r = 0;
+
+            int divisor = 0;
+
+            // loop interno para cada pixel
+            for (; ii < hh; ii++)
+            {
+                for (; jj < ww; jj++)
+                {
+                    soma_r = soma_r + image[ii][jj].rgbtRed;
+                    soma_g = soma_g + image[ii][jj].rgbtGreen;
+                    soma_b = soma_b + image[ii][jj].rgbtBlue;
+                    divisor ++;
+                }
+            }
+            soma_r = soma_r / divisor;
+            soma_g = soma_g / divisor;
+            soma_b = soma_b / divisor;
+
+            temp_image[i][j].rgbtRed = soma_r;
+            temp_image[i][j].rgbtGreen = soma_g;
+            temp_image[i][i].rgbtBlue = soma_b;
+
+        }
+    }
+
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            image[i][j].rgbtRed = temp_image[i][j].rgbtRed;
+            image[i][j].rgbtGreen = temp_image[i][j].rgbtGreen;
+            image[i][i].rgbtBlue = temp_image[i][i].rgbtBlue;
+        }
+    }
+
+
     return;
 }
