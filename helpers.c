@@ -123,14 +123,14 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             if (j == 0)
                 jj++;
 
-            hh = ii + 3;
-            ww = jj + 3;
+            hh = i;
+            ww = j;
 
-            if (hh > height)
-                hh = height;
+            if (hh < height)
+                hh++;
 
-            if (ww > width)
-                ww = width;
+            if (ww < width)
+                ww++;
 
             int aux_jj = jj;
 
