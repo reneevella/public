@@ -134,9 +134,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (; jj <= ww; jj++)
                 {
-                    soma_r = soma_r + image[ii][jj].rgbtRed;
-                    soma_g = soma_g + image[ii][jj].rgbtGreen;
-                    soma_b = soma_b + image[ii][jj].rgbtBlue;
+                    soma_r = soma_r + image[i][j].rgbtRed;
+                    soma_g = soma_g + image[i][j].rgbtGreen;
+                    soma_b = soma_b + image[i][j].rgbtBlue;
                     divisor ++;
                 }
             }
