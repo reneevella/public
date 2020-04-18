@@ -107,20 +107,32 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            ii = i - 1;
-            jj = j - 1;
-            hh = ii + 3;
-            ww = jj + 3;
             int soma_b = 0;
             int soma_g = 0;
             int soma_r = 0;
 
             int divisor = 0;
 
+            ii = i;
+            jj = j;
+            hh = ii;
+            ww = jj;
+
+            if (i > 0)
+                ii--;
+            if (j > 0)
+                jj--;
+
+            if (hh < height)
+                hh++;
+            if (ww < width)
+                ww++;
+
+
             // loop interno para cada pixel
-            for (; ii < hh; ii++)
+            for (; ii <= hh; ii++)
             {
-                for (; jj < ww; jj++)
+                for (; jj <= ww; jj++)
                 {
                     soma_r = soma_r + image[ii][jj].rgbtRed;
                     soma_g = soma_g + image[ii][jj].rgbtGreen;
@@ -128,9 +140,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     divisor ++;
                 }
             }
-            soma_r = soma_r / divisor;
-            soma_g = soma_g / divisor;
-            soma_b = soma_b / divisor;
+            soma_r = round(soma_r / (float)divisor);
+            soma_g = round(soma_g / (float)divisor);
+            soma_b = round(soma_b / (float)divisor);
 
             temp_image[i][j].rgbtRed = soma_r;
             temp_image[i][j].rgbtGreen = soma_g;
