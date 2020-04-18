@@ -105,9 +105,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     //verifica valor de image, faz a conta, guarda em img-temp
     for (int i = 0; i < height; i++)
     {
-        for (int j = 0; j < width; j++)
-        {
-            int soma_b = 0;
+                    int soma_b = 0;
             int soma_g = 0;
             int soma_r = 0;
 
@@ -128,6 +126,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             if (ww < width)
                 ww++;
 
+
+        for (int j = 0; j < width; j++)
+        {
 
             // loop interno para cada pixel
             for (; ii <= hh; ii++)
