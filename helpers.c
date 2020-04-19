@@ -118,22 +118,23 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             soma_r = 0;
             divisor = 1;
 
-            ii = i - 1;
-            jj = j - 1;
-
-            if (i == 0)
-                ii++;
-
-            if (j == 0)
-                jj++;
-
             hh = i;
             ww = j;
 
-            if (hh < height)
+            ii = i - 1;
+            jj = j - 1;
+
+            if (i <= 0)
+                ii = i;
+
+            if (j <= 0)
+                jj = 0
+
+
+            if (i < (height - 1))
                 hh++;
 
-            if (ww < width)
+            if (j < (width - 1))
                 ww++;
 
             int aux_jj = jj;
@@ -150,6 +151,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     divisor ++;
                 }
             }
+
             soma_r = round(soma_r / (float)divisor);
             soma_g = round(soma_g / (float)divisor);
             soma_b = round(soma_b / (float)divisor);
