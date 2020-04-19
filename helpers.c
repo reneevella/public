@@ -139,9 +139,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
 
             // loop interno para cada pixel
-            for (; ii <= hh; ii++)
+            for (; ii < hh; ii++)
             {
-                for (jj = aux_jj; jj <= ww; jj++)
+                for (jj = aux_jj; jj < ww; jj++)
                 {
                     soma_r = soma_r + image[ii][jj].rgbtRed;
                     soma_g = soma_g + image[ii][jj].rgbtGreen;
