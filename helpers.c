@@ -94,15 +94,8 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
 
-    int temp_blue = 0, temp_green = 0, temp_red = 0;
     int ii, hh, jj, ww = 0;
 
-
-                int soma_b = 0;
-            int soma_g = 0;
-            int soma_r = 0;
-
-            int divisor = 0;
 
     RGBTRIPLE temp_image[height][width];
 
@@ -110,7 +103,10 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     //verifica valor de image, faz a conta, guarda em img-temp
     for (int i = 0; i < height; i++)
     {
-
+        int soma_b = 0;
+        int soma_g = 0;
+        int soma_r = 0;
+        int divisor = 1;
 
 
         for (int j = 0; j < width; j++)
