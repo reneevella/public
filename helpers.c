@@ -162,7 +162,6 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             int aux_jj = jj;
 
 
-
             // loop interno para cada pixel
             for (; ii <= hh; ii++)
             {
@@ -182,6 +181,13 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             temp_image[i][j].rgbtRed = soma_r;
             temp_image[i][j].rgbtGreen = soma_g;
             temp_image[i][i].rgbtBlue = soma_b;
+
+            int ii = 0, hh = 0, jj = 0, ww = 0;
+
+            int soma_b = 0;
+            int soma_g = 0;
+            int soma_r = 0;
+            int divisor = 0;
 
 
 
