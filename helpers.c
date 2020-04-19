@@ -36,13 +36,19 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
             int temp_red = round(.393 * image[i][j].rgbtRed + .769 * image[i][j].rgbtGreen + .189 * image[i][j].rgbtBlue);
 
             if (temp_blue > 255)
+            {
                 temp_blue = 255;
+            }
 
             if (temp_green > 255)
+            {
                 temp_green = 255;
+            }
 
             if (temp_red > 255)
+            {
                 temp_red = 255;
+            }
 
             image[i][j].rgbtRed = temp_red;
             image[i][j].rgbtBlue = temp_blue;
@@ -57,10 +63,10 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
     RGBTRIPLE *imgcpy = malloc(width * sizeof(RGBTRIPLE));
-    if (NULL == imgcpy)
+
+    if (NULL == imgcpy) // malloc failed
     {
-    // malloc failed
-    return;
+        return;
     }
 
 
@@ -69,13 +75,9 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         int k = width - 1;
 
         // copia conteudo de image para imgcpy
-
-        //memcpy(imgcpy, image, sizeof(width * sizeof(RGBTRIPLE)));
-
         for (int j = 0; j < width; j++)
         {
             imgcpy[j] = image[i][j];
-
         }
 
         for (int j = 0; j < width; j++)
@@ -85,7 +87,7 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
         }
     }
 
-    free (imgcpy);
+    free(imgcpy);
 
     return;
 }
@@ -98,7 +100,6 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     int tot_r, tot_g, tot_b = 0;
 
     RGBTRIPLE temp_image[height][width];
-
 
     //verifica valor de image, faz a conta, guarda em img-temp
 
@@ -137,7 +138,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 ww = jj + 3;
 
                 if (ww >= width)
+                {
                     ww = width;
+                }
             }
             else
             {
@@ -145,8 +148,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 ww = jj + 2;
 
                 if (ww >= width)
+                {
                     ww = width;
-
+                }
             }
 
             int aux_jj = jj;
@@ -170,7 +174,6 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             temp_image[i][j].rgbtRed = tot_r;
             temp_image[i][j].rgbtGreen = tot_g;
             temp_image[i][j].rgbtBlue = tot_b;
-
         }
     }
 
