@@ -104,7 +104,6 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
     for (int i = 0; i < height; i++)
     {
-
         for (int j = 0; j < width; j++)
         {
             int soma_b = 0;
@@ -152,10 +151,6 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
             int aux_jj = jj;
 
-
-            printf("\ni: %i \nj: %i \nii: %i \njj: %i \n hh: %i\n ww: %i\n\n", i,j,ii,jj,hh,ww);
-
-
             // loop interno para cada pixel
             for (; ii < hh; ii++)
             {
@@ -165,19 +160,12 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     soma_g = soma_g + image[ii][jj].rgbtGreen;
                     soma_b = soma_b + image[ii][jj].rgbtBlue;
                     divisor ++;
-
-                   printf("\nLoop interno!! \ni: %i j: %i ii: %i jj: %i hh: %i ww: %i\n", i,j,ii,jj,hh,ww);
-                   printf("Soma R: %i, soma G: %i, soma B: %i, divisor: %i\n", soma_r, soma_g, soma_b, divisor);
                 }
-                printf("\nLoop ii!! \n");
             }
 
             tot_r = round(soma_r / (float)divisor);
             tot_g = round(soma_g / (float)divisor);
             tot_b = round(soma_b / (float)divisor);
-
-            printf("\nLoop externo\nSoma R: %i, soma G: %i, soma B: %i, divisor: %i\n", soma_r, soma_g, soma_b, divisor);
-            printf("\n\nDividido:\nR %i G: %i, B: %i  divisor: %i\n", tot_r, tot_g, tot_b, divisor);
 
             temp_image[i][j].rgbtRed = tot_r;
             temp_image[i][j].rgbtGreen = tot_g;
@@ -186,8 +174,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         }
     }
 
-
-
+    //copia temp_image para matriz image
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -198,94 +185,5 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
         }
     }
 
-    //imprime matriz
-    for (int i = 0; i < height; i++)
-    {
-        for (int j = 0; j < width; j++)
-        {
-            printf("%i ", image[i][j].rgbtBlue);
-            printf("%i ", image[i][j].rgbtGreen);
-            printf("%i ", image[i][j].rgbtRed);
-            printf("\n");
-        }
-         printf("\n");
-    }
-
-
     return;
 }
-
-/*******
-    for (int i = 0; i < height; i++)
-    {
-
-        for (int j = 0; j < width; j++)
-        {
-            int soma_b = 0;
-            int soma_g = 0;
-            int soma_r = 0;
-            int divisor = 0;
-
-            ii = i - 1;
-            jj = j - 1;
-
-            hh = ii + 3;
-            ww = ii + 3;
-
-            if (i <= 0)
-            {
-                ii = i;
-                hh = 2;
-            }
-
-            if (j <= 0)
-            {
-                jj = j;
-                ww = 2;
-            }
-
-            if (hh > height)
-                hh--;
-
-            if (ww > width)
-                ww--;
-
-            int aux_jj = jj;
-
-
-            // loop interno para cada pixel
-            for (; ii < hh; ii++)
-            {
-                for (jj = aux_jj; jj < ww; jj++)
-                {
-                    soma_r = soma_r + image[ii][jj].rgbtRed;
-                    soma_g = soma_g + image[ii][jj].rgbtGreen;
-                    soma_b = soma_b + image[ii][jj].rgbtBlue;
-                    divisor ++;
-                }
-            }
-
-            tot_r = round(soma_r / (float)divisor);
-            tot_g = round(soma_g / (float)divisor);
-            tot_b = round(soma_b / (float)divisor);
-
-            temp_image[i][j].rgbtRed = tot_r;
-            temp_image[i][j].rgbtGreen = tot_g;
-            temp_image[i][i].rgbtBlue = tot_b;
-        }
-    }
-
-
-    for (int i = 0; i < height; i++)
-    {
-        for (int j = 0; j < width; j++)
-        {
-            image[i][j].rgbtRed = temp_image[i][j].rgbtRed;
-            image[i][j].rgbtGreen = temp_image[i][j].rgbtGreen;
-            image[i][i].rgbtBlue = temp_image[i][i].rgbtBlue;
-        }
-    }
-
-    return;
-}
-*********/
