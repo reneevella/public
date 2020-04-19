@@ -90,6 +90,32 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
     return;
 }
 
+/***********
+ *
+ *
+            hh = i;
+            ww = j;
+
+            ii = i - 1;
+            jj = j - 1;
+
+            if (i <= 0)
+                ii = i;
+
+            if (j <= 0)
+                jj = j;
+
+            if (i < (height))
+                hh++;
+
+            if (j < (width))
+                ww++;
+
+            int aux_jj = jj;
+
+********/
+
+
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
@@ -111,26 +137,30 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
         for (int j = 0; j < width; j++)
         {
-
             hh = i;
+            ii = i - 1;
+
+            jj = j - 1;
             ww = j;
 
-            ii = i - 1;
-            jj = j - 1;
-
+            //verifica se linha começa na borda
             if (i <= 0)
                 ii = i;
 
-            if (j <= 0)
+            //verifica se coluna começa na borda
+            if (j >= 0)
                 jj = j;
 
-            if (i < (height))
+            //verifica se linha termina na borda
+            if (i < height)
                 hh++;
 
-            if (j < (width))
+            //verifica se coluna termina na borda
+            if (j < width)
                 ww++;
 
             int aux_jj = jj;
+
 
 
             // loop interno para cada pixel
