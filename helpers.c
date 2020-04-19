@@ -95,12 +95,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 {
 
     int ii = 0, hh = 0, jj = 0, ww = 0;
-
-    int soma_b = 0;
-    int soma_g = 0;
-    int soma_r = 0;
-    int divisor = 0;
-
+    int tot_r, tot_g, tot_b = 0;
 
     RGBTRIPLE temp_image[height][width];
 
@@ -111,24 +106,34 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 
         for (int j = 0; j < width; j++)
         {
-
-            hh = i;
-            ww = j;
+            int soma_b = 0;
+            int soma_g = 0;
+            int soma_r = 0;
+            int divisor = 0;
 
             ii = i - 1;
             jj = j - 1;
 
+            hh = 3;
+            ww = 3;
+
             if (i <= 0)
+            {
                 ii = i;
+                hh = 2;
+            }
 
             if (j <= 0)
+            {
                 jj = j;
+                ww = 2;
+            }
 
-            if (i < (height))
-                hh++;
+            if (hh > height)
+                hh--;
 
-            if (j < (width))
-                ww++;
+            if (ww > width)
+                ww--;
 
             int aux_jj = jj;
 
@@ -145,19 +150,15 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 }
             }
 
-            soma_r = round(soma_r / (float)divisor);
-            soma_g = round(soma_g / (float)divisor);
-            soma_b = round(soma_b / (float)divisor);
+            tot_r = round(soma_r / (float)divisor);
+            tot_g = round(soma_g / (float)divisor);
+            tot_b = round(soma_b / (float)divisor);
 
-            temp_image[i][j].rgbtRed = soma_r;
-            temp_image[i][j].rgbtGreen = soma_g;
-            temp_image[i][i].rgbtBlue = soma_b;
-
-
-
+            temp_image[i][j].rgbtRed = tot_r;
+            temp_image[i][j].rgbtGreen = tot_g;
+            temp_image[i][i].rgbtBlue = tot_b;
         }
     }
-
 
 
     for (int i = 0; i < height; i++)
@@ -169,9 +170,6 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             image[i][i].rgbtBlue = temp_image[i][i].rgbtBlue;
         }
     }
-
-    image = temp_image;
-
 
     return;
 }
