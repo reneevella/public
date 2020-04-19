@@ -124,10 +124,10 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             if (j <= 0)
                 jj = j;
 
-            if (i < (height - 1))
+            if (i < (height))
                 hh++;
 
-            if (j < (width - 1))
+            if (j < (width))
                 ww++;
 
             int aux_jj = jj;
@@ -154,10 +154,6 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             temp_image[i][i].rgbtBlue = soma_b;
 
 
-            soma_b = 0;
-            soma_g = 0;
-            soma_r = 0;
-            divisor = 0;
 
         }
     }
