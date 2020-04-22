@@ -73,9 +73,11 @@ int main(int argc, char *argv[])
             //se for o primeiro arquivo
             if (n_files == 0)
             {
-                //sprintf(filename, "%03i.jpg", n_files);
+                fclose(img);
 
-                //img = fopen(filename, "w");
+                sprintf(filename, "%03i.jpg", n_files);
+
+                img = fopen(filename, "w");
 
                 fwrite(buffer, 512, 1, img);
             }
@@ -97,7 +99,7 @@ int main(int argc, char *argv[])
 
         else //já é um jpg, então continua copiando próximos 512 bytes
         {
-           fwrite(buffer, 512, 1, img);
+            fwrite(buffer, 512, 1, img);
         }
 
     }// fecha while
