@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    n_fread = fread(buffer, 512, 50, file);
+    n_fread = 50;
 
 
     //repete até acabar os arquivos
