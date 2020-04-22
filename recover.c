@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 
     //fread(data, size, number, intptr);
@@ -33,25 +34,18 @@
     //tenta ler n elentos, se não tiver n elentos ele retorna um valor menos que n
     //criar condição para determinar se o fread chegou até o final do arquivo
 
-
+typedef uint8_t BYTE;
 
 int main(int argc, char *argv[])
 {
+
     if (argc != 2)
     {
         printf("image");
         return 1;
     }
 
-
-    unsigned char buffer[512];
-    char filename[8];
-
-    int n_files = 0;
-    int n_fread = 0;
-
     FILE *file = fopen(argv[1], "r");
-    FILE *img = NULL;
 
     if (file == NULL)
     {
@@ -59,14 +53,17 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    n_fread = 50;
+
+    BYTE buffer[512];
+    char filename[8];
+    int  n_files = 0;
+
+    FILE *img = NULL;
 
 
     //repete até acabar os arquivos
-    while (n_files <= n_fread)
+    while (fread(buffer, 512, 1, file) == 1)
     {
-
-        fread(buffer, 512, n_fread, file);
 
         //se for o começo de um JPEG
         if (buffer[0] == 0xff && buffer[1] == 0xd8 && buffer[2] == 0xff && (buffer[3] & 0xf0) == 0xe0)
@@ -74,30 +71,23 @@ int main(int argc, char *argv[])
             //se for o primeiro arquivo
             if (n_files == 0)
             {
-                //cria um arquivo novo 000
                 sprintf(filename, "%03i.jpg", n_files);
 
-                //abre o arquivo 000
                 img = fopen(filename, "w");
 
-                //copia 512 bytes para esse arquivo com fwrite
                 fwrite(&buffer, 512, 1, img);
             }
 
 
             else
             {
-                //fecha arquivo anterior
                 fclose(img);
 
-                //cria um arquivo novo 000n_files
                 sprintf(filename, "%03i.jpg", n_files);
 
-                //abre o arquivo
                 img = fopen(filename, "w");
 
-                //copia 512 bytes para esse arquivo com fwrite
-                fwrite(&buffer, 512, 1, img);
+                fwrite(buffer, 512, 1, img);
             }
 
             n_files++;
@@ -106,7 +96,8 @@ int main(int argc, char *argv[])
 
         else //já é um jpg, então continua copiando próximos 512 bytes
         {
-            fwrite(&buffer, 512, 1, img);
+           img = fopen(filename, "w");
+           fwrite(buffer, 512, 1, img);
         }
 
     }// fecha while
