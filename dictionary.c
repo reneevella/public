@@ -1,6 +1,10 @@
 // Implements a dictionary's functionality
 
 #include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <cs50.h>
+#include <string.h>
 
 #include "dictionary.h"
 
@@ -36,7 +40,7 @@ unsigned int hash(const char *word) //source https://cs50.stackexchange.com/ques
     {
          hash_value = (hash_value << 2) ^ word[i];
     }
-    return (int)((hash >> 16) ^ (hash & 0xffff));    //hash % N; N is size of hashtable
+    return (int)((hash_value >> 16) ^ (hash_value & 0xffff));    //hash % N; N is size of hashtable
 
 }
 
@@ -49,7 +53,7 @@ bool load(const char *dictionary)
     if (file == NULL)
     {
         printf("Could not open the file");
-        return FALSE;
+        return false;
     }
 
 
@@ -58,14 +62,14 @@ bool load(const char *dictionary)
 
 
 
-    while (buffer != EOF)
+    while (!strcpy(buffer, "EOF"))
     {
         fscanf(file, "%s", buffer);
 
         node *newnode = malloc(sizeof(node)); //aloca espaço para criar novo node
         if (newnode == NULL)
         {
-            return FALSE;
+            return false;
         }
 
         strcpy(newnode->word, buffer); //coloca word dentro do campo 'word' do node indicado por n
