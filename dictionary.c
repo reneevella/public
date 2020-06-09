@@ -4,6 +4,8 @@
 
 #include "dictionary.h"
 
+int number_words = 0;
+
 // Represents a node in a hash table
 typedef struct node
 {
@@ -13,7 +15,7 @@ typedef struct node
 node;
 
 // Number of buckets in hash table
-const unsigned int N = 1;
+const unsigned int N = 65536; //1
 
 // Hash table
 node *table[N];
@@ -26,10 +28,16 @@ bool check(const char *word)
 }
 
 // Hashes word to a number
-unsigned int hash(const char *word)
+unsigned int hash(const char *word) //source https://cs50.stackexchange.com/questions/37209/pset5-speller-hash-function in 06/09/2020
 {
-    // TODO
-    return 0;
+
+    unsigned int hash_value = 0;
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
+         hash_value = (hash_value << 2) ^ word[i];
+    }
+    return (int)((hash >> 16) ^ (hash & 0xffff));    //hash % N; N is size of hashtable
+
 }
 
 // Loads dictionary into memory, returning true if successful else false
@@ -47,6 +55,7 @@ bool load(const char *dictionary)
 
     char buffer[LENGTH + 1];
     int index = 0;
+
 
 
     while (buffer != EOF)
@@ -69,7 +78,10 @@ bool load(const char *dictionary)
         //inserir o node dentro da hash table.
         newnode->next = table[index];
 
-        table[index] = newnode;
+        table[index] = newnode; //acho que tá errado!!!! talvez  table[index].next ???
+
+        number_words++;
+
     }
 
 
@@ -82,7 +94,7 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
-    return 0;
+    return number_words;
 }
 
 // Unloads dictionary from memory, returning true if successful else false
