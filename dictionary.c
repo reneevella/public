@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <cs50.h>
 #include <string.h>
+#include <strings.h>
 
 #include "dictionary.h"
 
@@ -21,15 +22,60 @@ node;
 // Number of buckets in hash table
 const unsigned int N = 65536; //1
 
+
+
 // Hash table
 node *table[N];
+
+
+
 
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
-    // TODO
+    char buffer[LENGTH + 1];
+    int head = 0;
+
+
+
+    head = hash(word);
+
+    node *cursor =  table[head];
+
+    for (; cursor != NULL; cursor = cursor->next)
+    {
+        if ((strcasecmp((cursor->word), word)) == 0)
+            return true;
+    }
+
     return false;
 }
+
+
+/*
+
+head = hashtable[hashfunction(wordnew)];
+    node *cursor = head;
+    while (cursor != NULL)
+    {
+        if ((strcasecmp((cursor -> word), wordnew)) == 1)
+        {
+            return true;
+            break;
+        }
+        cursor = (cursor -> next);
+    }
+    return false;
+
+
+// ------------ FUNÇÃO CHECK
+// chamar fução hash
+// cursor = cursor->next
+// if cursor->next == NULL, return false
+// comparar strcasecmp
+
+*/
+
 
 // Hashes word to a number
 unsigned int hash(const char *word) //source https://cs50.stackexchange.com/questions/37209/pset5-speller-hash-function in 06/09/2020
@@ -43,6 +89,8 @@ unsigned int hash(const char *word) //source https://cs50.stackexchange.com/ques
     return (int)((hash_value >> 16) ^ (hash_value & 0xffff));    //hash % N; N is size of hashtable
 
 }
+
+
 
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
@@ -94,6 +142,8 @@ bool load(const char *dictionary)
     return true;
 }
 
+
+
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
 unsigned int size(void)
 {
@@ -101,12 +151,36 @@ unsigned int size(void)
     return number_words;
 }
 
+
+
+
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-    // TODO
-    return false;
+    node *temp = NULL;
+    node *cursor = NULL;
+
+    for (int i = 0; i < N; i++)
+    {
+        temp = table[i];
+
+        while (temp->next != NULL)
+        {
+            cursor = cursor->next;
+            free(temp);
+            temp = cursor;
+        }
+
+    }
+
+
+    return true;
 }
+
+
+
+
+
 
 
 // ------------ FUNÇÃO LOAD
