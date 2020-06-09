@@ -88,7 +88,7 @@ unsigned int hash(const char *word) //source https://cs50.stackexchange.com/ques
     {
          hash_value = (hash_value << 2) ^ word[i];
     }
-    return (int)((hash_value >> 16) ^ (hash_value & 0xffff));    //hash % N; N is size of hashtable
+    return hash_value % N;     //hash % N; N is size of hashtable   /////(int)((hash_value >> 16) ^ (hash_value & 0xffff));
 
 }
 
