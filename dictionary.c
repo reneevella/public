@@ -6,6 +6,7 @@
 #include <cs50.h>
 #include <string.h>
 #include <strings.h>
+#include <ctype.h>
 
 #include "dictionary.h"
 
@@ -98,6 +99,7 @@ bool load(const char *dictionary)
 
     //open file //verifica se abriu // if return value is NULL, return false, senão continua
     FILE *file = fopen(dictionary, "r");
+
     if (file == NULL)
     {
         printf("Could not open the file");
@@ -108,11 +110,13 @@ bool load(const char *dictionary)
     char buffer[LENGTH + 1];
     int index = 0;
 
+    char c = 0;
 
 
-    while (!strcpy(buffer, "EOF"))
+
+    while (c != EOF)
     {
-        fscanf(file, "%s", buffer);
+        c = fscanf(file, "%s", buffer);
 
         node *newnode = malloc(sizeof(node)); //aloca espaço para criar novo node
         if (newnode == NULL)
