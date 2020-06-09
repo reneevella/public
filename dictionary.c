@@ -10,7 +10,7 @@
 
 #include "dictionary.h"
 
-int number_words = 0;
+
 
 // Represents a node in a hash table
 typedef struct node
@@ -29,21 +29,22 @@ const unsigned int N = 65536; //1
 node *table[N];
 
 
+//Numero de palavras no dicionario
+int number_words = 0;
 
 
 // Returns true if word is in dictionary else false
 bool check(const char *word)
 {
     char buffer[LENGTH + 1];
-    int head = 0;
 
-
+    unsigned int head = 0;
 
     head = hash(word);
 
     node *cursor =  table[head];
 
-    for (; cursor != NULL; cursor = cursor->next)
+    for (; cursor->next != NULL; cursor = cursor->next)
     {
         if ((strcasecmp((cursor->word), word)) == 0)
             return true;
