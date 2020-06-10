@@ -95,7 +95,6 @@ bool load(const char *dictionary)
             word_count++;
         }
 
-        //free(new_node);
     }
 
 
@@ -114,12 +113,21 @@ bool check(const char *word)
     {
         word_copy[i] = tolower(word[i]);
     }
+
+
     // Adds null terminator to end string
     word_copy[n] = '\0';
+
+
     // Initializes index for hashed word
+
     int h = hash_index(word_copy);
+
     // Sets cursor to point to same address as hashtable index/bucket
     node *cursor = hashtable[h];
+
+
+
     // Sets cursor to point to same location as head
 
     // If the word exists, you should be able to find in dictionary data structure.
@@ -153,24 +161,21 @@ unsigned int size(void)
 bool unload(void)
 {
 
-
-
     for (int i = 0; i < HASHTABLE_SIZE; i++)
     {
 
         node *cursor = hashtable[i];
 
-        if (cursor != NULL)
-            {
-            while(cursor != NULL)
-            {
-                node *temp = cursor;
 
-                cursor = cursor->next;
+        while(cursor != NULL)
+        {
+            node *temp = cursor;
 
-                free(temp);
-            }
+            cursor = cursor->next;
+
+            free(temp);
         }
+
 
     }
 
