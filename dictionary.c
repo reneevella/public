@@ -171,7 +171,9 @@ bool unload(void)
 
         while(cursor != NULL)
         {
-            node *temp = cursor;
+            node *temp = NULL;
+
+            temp = cursor;
 
             cursor = cursor->next;
 
