@@ -135,9 +135,9 @@ bool unload(void)
     node *temp = NULL;
     node *cursor = NULL;
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < HASHTABLE_SIZE; i++)
     {
-        temp = table[i];
+        temp = hashtable[i];
 
         while (temp->next != NULL)
         {
