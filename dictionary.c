@@ -40,29 +40,44 @@ int word_count = 0;
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
+
     // Opens dictionary
     FILE *file = fopen(dictionary, "r");
+
+
     if (file == NULL)
     {
         return false;
     }
+
+
     // Scans dictionary word by word (populating hash table with nodes containing words found in dictionary)
+
     char word[LENGTH + 1];
+
+
     while (fscanf(file, "%s", word) != EOF)
     {
+
         // Mallocs a node for each new word (i.e., creates node pointers)
         node *new_node = malloc(sizeof(node));
+
+
         // Checks if malloc succeeded, returns false if not
         if (new_node == NULL)
         {
             unload();
             return false;
         }
+
+
         // Copies word into node if malloc succeeds
         strcpy(new_node->word, word);
 
+
         // Initializes & calculates index of word for insertion into hashtable
         int h = hash_index(new_node->word);
+
 
         // Initializes head to point to hashtable index/bucket
         node *head = hashtable[h];
@@ -80,6 +95,9 @@ bool load(const char *dictionary)
             word_count++;
         }
     }
+
+    free(new_node);
+
     fclose(file);
     return true;
 }
@@ -132,20 +150,24 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-    node *temp = NULL;
-    node *cursor = temp;
+
+
 
     for (int i = 0; i < HASHTABLE_SIZE; i++)
     {
-        temp = hashtable[i];
 
-        while (cursor != NULL)
-        {
-            temp = cursor;
-            cursor = cursor->next;
-            free(temp);
-            free(cursor);
+        node *cursor = hashtable[i];
 
+        if (cursor != NULL)
+            {
+            while(cursor != NULL)
+            {
+                node *temp = cursor;
+
+                cursor = cursor->next;
+
+                free(temp);
+            }
         }
 
     }
