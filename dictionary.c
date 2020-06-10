@@ -167,7 +167,7 @@ bool unload(void)
         node *cursor = hashtable[i];
 
 
-        while(cursor != NULL)
+        while(cursor->next != NULL)
         {
             node *temp = cursor;
 
