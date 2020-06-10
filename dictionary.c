@@ -44,10 +44,16 @@ bool check(const char *word)
 
     node *cursor =  table[head];
 
-    for (; cursor->next != NULL; cursor = cursor->next)
+    while (cursor != NULL)
     {
         if ((strcasecmp((cursor->word), word)) == 0)
+        {
             return true;
+        }
+        else
+        {
+            cursor = cursor->next;
+        }
     }
 
     return false;
@@ -111,18 +117,19 @@ bool load(const char *dictionary)
     char buffer[LENGTH + 1];
     unsigned int index = 0;
 
-    char c = 0;
 
 
 
-    do
+
+    while (fscanf(file, "%s", word) != EOF)
     {
-        c = fscanf(file, "%s", buffer);
+
 
         node *newnode = malloc(sizeof(node)); //aloca espaço para criar novo node
-        
+
         if (newnode == NULL)
         {
+            unload();
             return false;
         }
 
@@ -132,19 +139,30 @@ bool load(const char *dictionary)
 
         index = hash(buffer); //chama função hash para pegar numero index
 
+        node *head = table[index];
 
-        //inserir o node dentro da hash table.
-        newnode->next = table[index];
 
-        table[index] = newnode; //acho que tá errado!!!! talvez  table[index].next ???
+        //inserir o node no começo  da hash table.
 
+        if (head == NULL)
+        {
+            table[index] = newnode;
+
+        }
+        else
+        {
+            newnode->next = table[index];
+            table[index] = newnode;
+
+        }
         number_words++;
 
     }
-    while (c != EOF);
+
 
     // close the file
     fclose(file);
+
     return true;
 }
 
@@ -153,7 +171,7 @@ bool load(const char *dictionary)
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
 unsigned int size(void)
 {
-    // TODO
+    
     return number_words;
 }
 
