@@ -67,8 +67,6 @@ bool check(const char *word)
 
 
 
-
-
 // Hashes word to a number
 //source https://cs50.stackexchange.com/questions/37209/pset5-speller-hash-function in 06/09/2020
 unsigned int hash(const char *word)
