@@ -160,11 +160,10 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-    node *cursor = NULL;
+    node *cursor = malloc(sizeof(node));
 
     for (int i = 0; i < HASHTABLE_SIZE; i++)
     {
-
 
 
         cursor = hashtable[i];
@@ -172,7 +171,7 @@ bool unload(void)
 
         while (cursor != NULL)
         {
-            node *temp = NULL;
+            node *temp = malloc(sizeof(node));
 
             temp = cursor;
 
