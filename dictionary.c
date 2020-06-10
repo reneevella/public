@@ -133,17 +133,18 @@ unsigned int size(void)
 bool unload(void)
 {
     node *temp = NULL;
-    node *cursor = NULL;
+    node *cursor = temp;
 
     for (int i = 0; i < HASHTABLE_SIZE; i++)
     {
         temp = hashtable[i];
 
-        while (temp->next != NULL)
+        while (cursor != NULL)
         {
+            temp = cursor;
             cursor = cursor->next;
             free(temp);
-            temp = cursor;
+
         }
 
     }
