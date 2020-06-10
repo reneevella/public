@@ -109,17 +109,18 @@ bool load(const char *dictionary)
 
 
     char buffer[LENGTH + 1];
-    int index = 0;
+    unsigned int index = 0;
 
     char c = 0;
 
 
 
-    while (c != EOF)
+    do
     {
         c = fscanf(file, "%s", buffer);
 
         node *newnode = malloc(sizeof(node)); //aloca espaço para criar novo node
+        
         if (newnode == NULL)
         {
             return false;
@@ -140,7 +141,7 @@ bool load(const char *dictionary)
         number_words++;
 
     }
-
+    while (c != EOF);
 
     // close the file
     fclose(file);
