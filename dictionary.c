@@ -66,7 +66,7 @@ bool load(const char *dictionary)
         // Checks if malloc succeeded, returns false if not
         if (new_node == NULL)
         {
-            unload();
+            //unload();
             return false;
         }
 
@@ -94,9 +94,11 @@ bool load(const char *dictionary)
             hashtable[h] = new_node;
             word_count++;
         }
+
+        free(new_node);
     }
 
-    free(new_node);
+
 
     fclose(file);
     return true;
