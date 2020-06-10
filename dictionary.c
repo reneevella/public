@@ -95,7 +95,7 @@ bool load(const char *dictionary)
             word_count++;
         }
 
-        free(new_node);
+        //free(new_node);
     }
 
 
