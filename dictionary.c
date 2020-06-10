@@ -128,17 +128,26 @@ unsigned int size(void)
     return word_count;
 }
 
+
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
-    node *head = NULL;
-    node *cursor = head;
-    // freeing linked lists
-    while (cursor != NULL)
+    node *temp = NULL;
+    node *cursor = NULL;
+
+    for (int i = 0; i < N; i++)
     {
-        node *temp = cursor;
-        cursor = cursor->next;
-        free(temp);
+        temp = table[i];
+
+        while (temp->next != NULL)
+        {
+            cursor = cursor->next;
+            free(temp);
+            temp = cursor;
+        }
+
     }
+
+
     return true;
 }
