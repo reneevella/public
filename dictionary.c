@@ -164,10 +164,12 @@ bool unload(void)
     for (int i = 0; i < HASHTABLE_SIZE; i++)
     {
 
-        node *cursor = hashtable[i];
+        node *cursor = NULL;
+
+        cursor = hashtable[i];
 
 
-        while(cursor->next != NULL)
+        while(cursor != NULL)
         {
             node *temp = cursor;
 
