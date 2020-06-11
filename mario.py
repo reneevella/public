@@ -5,8 +5,6 @@ test = 0
 col = 0
 hashcount = 1
 
-#if line.is_integer()
-
 while test == 0:
     try:
         height = int(userinput)
@@ -14,13 +12,11 @@ while test == 0:
     except ValueError:
         height = 0
 
-
     if height in range(1, 9):
         test = 1
 
     else:
         userinput = input("Please choose between 1 and 8\n")
-
 
 
 col = height - 1
