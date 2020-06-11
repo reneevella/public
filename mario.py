@@ -9,13 +9,14 @@ while height < 1 or height > 8:
 
     height = int(input("Please choose between 1 and 8\n"))
 
-col = height
+
+col = height - 1
 
 while col > 0:
 
-    print("#" * hashcount, end="")
-
     print(" " * col, end="")
+
+    print("#" * hashcount, end="")
 
     print("  ", end="")
 
