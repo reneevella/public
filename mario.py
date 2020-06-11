@@ -12,7 +12,7 @@ while height < 1 or height > 8:
 
 col = height - 1
 
-while col > 0:
+while col >= 0:
 
     print(" " * col, end="")
 
