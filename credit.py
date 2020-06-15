@@ -13,7 +13,7 @@ cardnumber = get_int("Enter your cardnumber:\n");
 # printf("\n\ndigitos: %i\nContarDigitos: %i\nCardnumber: %li\n", digitos,contardigitos,cardnumber);
 
 restosum = cardnumber % 10;
-cardnumber = cardnumber / 10;
+cardnumber = cardnumber // 10;
 
 
 
@@ -23,17 +23,17 @@ while cardnumber >= 1:
     if ((cardnumber % 10) * 2) >= 10:
 
         contardigitos = contardigitos + (((cardnumber % 10) * 2) - 9)
-        cardnumber = cardnumber / 10
+        cardnumber = cardnumber // 10
         digitos += 1
 
     else:
 
         contardigitos = contardigitos + (cardnumber % 10) * 2;
-        cardnumber = cardnumber / 10;
+        cardnumber = cardnumber // 10;
         digitos += 1
 
     restosum = cardnumber % 10 + restosum
-    cardnumber = cardnumber / 10
+    cardnumber = cardnumber // 10
     digitos += 1
 
 
@@ -79,8 +79,8 @@ else:
     flag = "INVALID"
 
 
-print(" " + flag)
+print("" + flag)
 
 
-# printf("Digitos: %i\nContarDigitos: %i\nRestosum: %i\nCardnumber: %li\nFlag: %s\n\n\n", digitos,contardigitos, restosum, cardnumber,flag);
+#print(f"Digitos: {digitos} \nContarDigitos: {contardigitos}\nRestosum:{restosum}\nCardnumber: {cardnumber}\nFlag: {flag}\n\n\n");
 
