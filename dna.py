@@ -11,10 +11,10 @@ if len(argv) != 3:
 
 
 #abre arquivo e le como lista
-with open(argv[1],"r") as csv:
-    csv_file = list(csv.reader(csv))
-    csv_file[0].remove("name")
-    i = csv_file[0]
+with open(argv[1],"r") as csv_file:
+    csv_readfile = list(csv.reader(csv_file))
+    csv_readfile[0].remove("name")
+    i = csv_readfile[0]
 
 
 #abre arquivo txt
@@ -67,7 +67,7 @@ for q in range(len(i)): #eg. for the small CSV i = 3. so iterates for each nucle
 #update the list to be a list of strings to enable comparison.
 valuelist = list(map(str, valuelist))
 #make a new list to preserve reader
-cleaned = list(reader)
+cleaned = list(csv_readfile)
 cleaned.pop(0)
 #compare valuelist to reader and if found print the name of the person whos DNA has all the occurances to the console/terminal.
 for person in cleaned:
