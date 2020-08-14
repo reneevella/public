@@ -13,8 +13,8 @@ if len(argv) != 3:
 #abre arquivo e le como lista
 with open(argv[1],"r") as csv:
     csv_file = list(csv.reader(csv))
-    #csv_file[0]
-    i = csv_file[0].remove("name")
+    csv_file[0].remove("name")
+    i = csv_file[0]
 
 
 #abre arquivo txt
