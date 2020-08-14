@@ -42,7 +42,8 @@ for n in range(len(copy_csv)):
             contador = 0
             break
 
-        elif (pos_atual != -1) and anterior == 0:
+        elif anterior == 0 and (pos_atual != -1) :
+
             contador += 1
             maior = contador
             anterior = pos_atual
