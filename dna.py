@@ -4,11 +4,9 @@ import csv
 import re
 
 
-
 if len(argv) != 3:
     print ("Usage: python dna.py data.csv sequence.txt")
     exit(1)
-
 
 
 with open(argv[1],"r") as csv_file:
@@ -71,15 +69,15 @@ for n in range(len(copy_csv)):
 
 
 valores = list(map(str, valores))
-cleaned = list(csv_readfile)
-cleaned.pop(0)
+busca = list(csv_readfile)
+busca.pop(0)
 
 
-for person in cleaned:
+for linha in busca:
 
-    if person[1:] == valores:
-        print(f"{person[0]}")
+    if linha[1:] == valores:
+        print(f"{linha[0]}")
         break
 
-    elif person == cleaned[-1]:
+    elif linha == busca[-1]:
         print("No match")
