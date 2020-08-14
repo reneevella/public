@@ -2,30 +2,42 @@ from sys import argv, exit
 import itertools
 import csv
 import re
-# check if there are the required amount of command line args.
+
+
+
 if len(argv) != 3:
-    print(f"Error there should be 2 argv, you have {argv}")
+    print ("Usage: python dna.py data.csv sequence.txt")
     exit(1)
-# Open CSV and read to a list.
-with open(argv[1],"r") as inputfile:
-    reader = list(csv.reader(inputfile))
-    reader[0].remove("name")
-    i = reader[0]
-#Open Sequence TXT
-with open(argv[2],"r") as sequence:
-    data = sequence.read()
+
+
+#abre arquivo e le como lista
+with open(argv[1],"r") as csv:
+    csv_file = list(csv.reader(csv))
+    #csv_file[0]
+    i = csv_file[0].remove("name")
+
+
+#abre arquivo txt
+with open(argv[2],"r") as txt:
+    sequence = txt.read()
+
+
 # i is a segement of DNA which contains the data from the CSV we are looking for.
 # for each sequence
+
 valuelist = []
+
 for q in range(len(i)): #eg. for the small CSV i = 3. so iterates for each nucleotide.
     maxcounter = 0
     counter = 0
     position = 0
     previouspos = 0
+
+
     # while the dna sequence has not been fully scanned through do the following.
-    while position < len(data):
+    while position < len(sequence):
         # this gives the position at which the sequence is found
-        position = data.find(i[q], position)
+        position = sequence.find(i[q], position)
         if position == -1: # i.e not found, reset the counter, stop the loop.
             counter = 0
             break
