@@ -48,7 +48,7 @@ for q in range(len(i)):
 
         #sequential occurances
         elif (pos_atual != -1) and ((pos_atual - len(i[q])) == anterior):
-            counter += 1
+            contador += 1
             anterior = pos_atual
             if maior < contador:
                 maior = contador
